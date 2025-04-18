@@ -1,5 +1,6 @@
 import csv
 
+#To generate the csv of gene interactions in the format of target, affector gene
 def process_gene_data(input_file, output_file):
     with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
         reader = csv.reader(infile, delimiter=',')  # delim for txt
@@ -13,6 +14,6 @@ def process_gene_data(input_file, output_file):
                 writer.writerow([target_gene, targeting_gene])
 
 # Example usage:
-input_filename = "./data/input/differentiation_input_GRN.txt"  
-output_filename = "differentiation_input_GRN_Gt.csv"
+input_filename = "./data/input/perturbed_matrix.txt"  
+output_filename = "./data/input/artificial/grn_gt_test.csv"
 process_gene_data(input_filename, output_filename)
