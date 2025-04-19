@@ -228,6 +228,10 @@ class sergio(object):
 
 
         if (len(self.master_regulators_idx_) + np.shape(allTargets)[0] != self.nGenes_):
+            print(len(self.master_regulators_idx_) + np.shape(allTargets)[0])
+            print(self.nGenes_)
+            print(self.master_regulators_idx_, np.shape(allTargets)[0])
+            print(allTargets)
             print ("Error: Inconsistent number of genes")
             sys.exit()
 
