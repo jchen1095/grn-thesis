@@ -212,6 +212,8 @@ class sergio(object):
             reader = csv.reader(f, delimiter=',')
             for row in reader:
                 if np.shape(row)[0] != self.nBins_ + 1:
+                    print(self.nBins_)
+                    print(np.shape(row)[0])
                     print ("Error: Inconsistent number of bins")
                     sys.exit()
 
