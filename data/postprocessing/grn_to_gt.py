@@ -1,19 +1,27 @@
 import csv
 
-#To generate the csv of gene interactions in the format of target, affector gene
 def process_gene_data(input_file, output_file):
-    with open(input_file, 'r') as infile, open(output_file, 'w', newline='') as outfile:
-        reader = csv.reader(infile, delimiter=',')  # delim for txt
+    with open(input_file, 'r', newline='') as infile, \
+         open(output_file, 'w', newline='') as outfile:
+        reader = csv.reader(infile, delimiter=',')
         writer = csv.writer(outfile)
-        # writer.writerow(["target_gene", "targeting_gene"])
-        
+        # Optional header:
+        # writer.writerow(['affector','target'])
+
         for row in reader:
-            if len(row) >= 3:
-                target_gene = row[0]
-                targeting_gene = row[2]
-                writer.writerow([target_gene, targeting_gene])
+            if len(row) < 2:
+                continue
+            target = row[0]
+            try:
+                nregs = int(row[1])
+            except ValueError:
+                continue
+            # regulators are the next nregs entries
+            regs = row[2:2 + nregs]
+            for reg in regs:
+                writer.writerow([reg, target])
 
 # Example usage:
-input_filename = "./data/input/perturbed_matrix.txt"  
-output_filename = "./data/input/artificial/grn_gt_test.csv"
+input_filename  = "gene_interactions.txt"
+output_filename = "grn_gt_test.csv"
 process_gene_data(input_filename, output_filename)
