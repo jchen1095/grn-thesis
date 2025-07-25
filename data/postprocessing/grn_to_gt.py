@@ -31,7 +31,7 @@ def process_gene_data(input_file, output_file):
             for reg in regs:
                 writer.writerow([reg, target])
 
-# Example usage:
+# Put your filepaths here!!
 input_filename  = "gene_interactions.txt"
 output_filename = "grn_gt_test.csv"
 process_gene_data(input_filename, output_filename)
