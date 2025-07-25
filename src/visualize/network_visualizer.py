@@ -2,29 +2,26 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import csv
 
-# Set the file path to your data file
-file_path = 'data/input/differentiation_input_GRN.txt'  # Change this to your actual file path
+#data file
+file_path = 'data/input/differentiation_input_GRN.txt'  #Need the gene regulation file
 
-# Create a directed graph
 G = nx.DiGraph()
-
-# Read and parse data
 with open(file_path, 'r') as f:
     reader = csv.reader(f)
     for row in reader:
         if len(row) < 4:
-            continue  # Skip invalid rows
+            continue  
         try:
             regulated = int(float(row[0]))
             regulator = int(float(row[2]))
             regulation_value = float(row[3])
-            color = 'green' if regulation_value > 0 else 'red'
+            color = 'green' if regulation_value > 0 else 'red' #coloring edges based on upregulation or downregulation
 
             G.add_edge(regulator, regulated, weight=abs(regulation_value), color=color)
         except ValueError:
-            continue  # Skip rows with bad values
+            continue 
 
-# Draw the network
+
 pos = nx.spring_layout(G, seed=42)
 edge_colors = [G[u][v]['color'] for u, v in G.edges()]
 
