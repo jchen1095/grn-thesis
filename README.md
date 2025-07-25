@@ -4,6 +4,10 @@ This repo contains code for the pipeline to simulate gene regulatory networks an
 
 The full pipeline is pipeline.ipynb. You will need to fix the filepaths/move data around. You should be able to find the repository for Slingshot here https://github.com/mossjacob/pyslingshot. You will also need at least the gene.py and sergio.py files from SERGIO https://github.com/PayamDiba/SERGIO. 
 
+# Data Directory
+
+This directory includes some small test GRNs that I used. More importantly, there are some scripts in the pre/postprocessing folders that could be useful. In `preprocessing` I have some scripts for converting tab deliminated files and also for creating csvs from txt files which I had to do for a lot of SERGIO data. In `postprocessing` there is a script to create 'ground truth' files which are simply files that map target genes to their affector genes. This is a type of file in SERGIO so it may be helpful to have scripts for creating them in the pipeline. 
+
 # GRN inital files 
 
 The advantage of this pipeline is that you can create the GRN you want to simulate. You can use the notebook in src/grn_creation to easily create the required files and also get visualizations of the networks.
@@ -37,3 +41,9 @@ If you have GRN files and want to visualize how the network looks, feel free to 
 # Simulating the network 
 
 Utilize src/pipeline.ipynb to finish running the simulation
+
+--------------
+
+## Experiment directories
+
+These contain the experiments I ran for writing my thesis document. Feel free to reference them for examples on how I used the pipeline
