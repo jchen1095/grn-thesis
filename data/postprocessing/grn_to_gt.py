@@ -1,3 +1,13 @@
+# --- This file processes a gene interaction file into ground truth format ---
+## Example:
+## Input file format:
+# gene1, number of regulators, reg1, strength of regulation, reg2, strength of regulation
+# gene2, number of regulators, reg1, strength of regulation, reg2, strength of regulation
+
+## Output file format: 
+# target, affector
+
+
 import csv
 
 def process_gene_data(input_file, output_file):
